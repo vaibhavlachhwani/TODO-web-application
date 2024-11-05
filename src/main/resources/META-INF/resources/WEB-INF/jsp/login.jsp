@@ -195,19 +195,10 @@
             background: #0056b3;
         }
 
-        .signup-text {
+        .invalid-text {
             margin-top: 20px;
-            color: #666;
+            color: #ff0000;
             font-size: 14px;
-        }
-
-        .signup-text a {
-            color: #007bff;
-            text-decoration: none;
-        }
-
-        .signup-text a:hover {
-            text-decoration: underline;
         }
 
     </style>
@@ -225,7 +216,7 @@
             <label for="password">Password</label>
         </div>
         <button type="submit">Login</button>
-<%--        <p class="signup-text">Don't have an account? <a href="#">Sign up</a></p>--%>
+        <p class="invalid-text" style="display: ${invalidDisplay}">Invalid username or password</p>
     </form>
 </div>
 </body>

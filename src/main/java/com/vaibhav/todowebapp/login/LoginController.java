@@ -17,7 +17,9 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String serveLoginPage() {
+    public String serveLoginPage(ModelMap model) {
+        model.put("invalidDisplay", "none");
+
         return "login";
     }
 
@@ -26,6 +28,8 @@ public class LoginController {
             (@RequestParam(value = "username", required = true) String username,
              @RequestParam(value = "password", required = true) String password, ModelMap model) {
         if (!authenticationService.authenticate(username, password)) {
+            model.put("invalidDisplay", "block");
+
             return "login";
         }
 
