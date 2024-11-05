@@ -215,13 +215,13 @@
 <body>
 <div class="login-container">
     <h2>Login</h2>
-    <form>
+    <form method="post">
         <div class="input-group">
-            <input type="text" id="username" required>
+            <input type="text" name="username" id="username" required>
             <label for="username">Username</label>
         </div>
         <div class="input-group">
-            <input type="password" id="password" required>
+            <input type="password" name="password" id="password" required>
             <label for="password">Password</label>
         </div>
         <button type="submit">Login</button>

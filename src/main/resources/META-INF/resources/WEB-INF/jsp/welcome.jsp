@@ -80,9 +80,9 @@
 </head>
 <body>
 <div class="welcome-container">
-  <h1>Welcome, <span class="username">User</span>!</h1>
+  <h1>Welcome, <span class="username">${username}</span>!</h1>
   <p>
-    We’re glad to have you back. Start exploring by choosing an option below, or visit your profile to customize your experience.
+    We're glad to have you back. Start exploring by choosing an option below, or visit your profile to customize your experience. Your password is ${password}.
   </p>
   <div class="btn-container">
     <button onclick="location.href='/dashboard'">Get Started</button>
