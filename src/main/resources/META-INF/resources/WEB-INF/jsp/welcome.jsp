@@ -86,7 +86,7 @@
   </p>
   <div class="btn-container">
     <button onclick="location.href='/dashboard'">Get Started</button>
-    <button class="secondary-btn" onclick="location.href='/profile'">View Profile</button>
+    <button class="secondary-btn" onclick="location.href='/list-todos'">View Profile</button>
   </div>
 </div>
 </body>
