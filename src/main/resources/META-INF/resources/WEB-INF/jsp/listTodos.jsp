@@ -118,7 +118,7 @@
     </div>
 
     <div>
-        <p>Your Todos are : ${todos}</p>
+        <p>Hey, ${username}. Your Todos are : ${todos}</p>
     </div>
 </div>
 </body>
