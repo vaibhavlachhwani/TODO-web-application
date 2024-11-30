@@ -116,6 +116,10 @@
     <div class="btn-container">
         <button onclick="location.href='/add-todo'">Add New To-Do</button>
     </div>
+
+    <div>
+        <p>Your Todos are : ${todos}</p>
+    </div>
 </div>
 </body>
 </html>
