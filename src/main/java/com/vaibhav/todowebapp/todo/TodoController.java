@@ -18,6 +18,6 @@ public class TodoController {
         var todos = todoService.findByUsername("alice");
         model.addAttribute("todos", todos);
 
-        return "listTodosTest";
+        return "listTodos";
     }
 }

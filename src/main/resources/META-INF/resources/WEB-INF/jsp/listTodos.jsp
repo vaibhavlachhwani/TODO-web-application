@@ -17,7 +17,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            /*height: 100vh;*/
             background: #f0f2f5;
             font-family: Arial, sans-serif;
         }
@@ -26,7 +26,7 @@
             background: #ffffff;
             padding: 40px 30px;
             width: 100%;
-            max-width: 600px;
+            max-width: 800px;
             border-radius: 8px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             text-align: center;
@@ -93,34 +93,19 @@
 </head>
 <body>
 <div class="todos-container">
-    <h1>Your To-Do List</h1>
+    <h1>Hey, ${username}. Here is your To-Do List</h1>
 
-    <!-- Hardcoded Todo Items -->
-    <div class="todo-item">
-        <h3>Finish Spring Boot Project</h3>
-        <p><strong>Due Date:</strong> 2024-11-15</p>
-        <p><strong>Status:</strong> <span class="status">Pending</span></p>
-    </div>
-
-    <div class="todo-item">
-        <h3>Prepare for Backend Interview</h3>
-        <p><strong>Due Date:</strong> 2024-11-20</p>
-        <p><strong>Status:</strong> <span class="status done">Completed</span></p>
-    </div>
-
-    <div class="todo-item">
-        <h3>Complete Java Assignment</h3>
-        <p><strong>Due Date:</strong> 2024-11-18</p>
-        <p><strong>Status:</strong> <span class="status">Pending</span></p>
-    </div>
+    <c:forEach items="${todos}" var="todos">
+        <div class="todo-item">
+            <h3>${todos.description}</h3>
+            <p><strong>Due Date:</strong> ${todos.dueDate}</p>
+            <p><strong>Is done?:</strong> <span class="status">${todos.done}</span></p>
+        </div>
+    </c:forEach>
 
     <!-- Button to add a new to-do -->
     <div class="btn-container">
         <button onclick="location.href='/add-todo'">Add New To-Do</button>
-    </div>
-
-    <div>
-        <p>Hey, ${username}. Your Todos are : ${todos}</p>
     </div>
 </div>
 </body>
