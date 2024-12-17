@@ -5,7 +5,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Your To-Do List</title>
+    <title>Add New To-Do Item</title>
     <style>
       * {
         margin: 0;
@@ -16,11 +16,10 @@
       body {
         display: flex;
         justify-content: center;
-        align-items: flex-start; /* Align items at the top */
-        min-height: 100vh; /* Allow body to grow with content */
+        align-items: center;
+        height: 100vh;
         background: #f0f2f5;
         font-family: Arial, sans-serif;
-        padding: 20px; /* Prevent content from touching edges */
       }
 
       .todos-container {
@@ -90,26 +89,63 @@
       button:hover {
         background: #0056b3;
       }
+
+      .input-group {
+        position: relative;
+        margin-bottom: 20px;
+      }
+
+      .input-group input {
+        width: 100%;
+        padding: 12px 15px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background: #f9f9f9;
+        outline: none;
+        transition: all 0.3s;
+      }
+
+      .input-group input:focus {
+        border-color: #007bff;
+        background: #ffffff;
+      }
+
+      .input-group label {
+        position: absolute;
+        left: 15px;
+        top: 12px;
+        color: #aaa;
+        font-size: 16px;
+        pointer-events: none;
+        transition: all 0.3s;
+      }
+
+      .input-group input:focus + label,
+      .input-group input:not(:placeholder-shown) + label {
+        top: -10px;
+        font-size: 12px;
+        color: #007bff;
+        background: #fff;
+        padding: 0 5px;
+      }
     </style>
   </head>
   <body>
     <div class="todos-container">
-      <h1>Hey, ${username}. Here is your To-Do List</h1>
+      <h1>Hey, ${username}. Add new todo item.</h1>
 
-      <c:forEach items="${todos}" var="todos">
-        <div class="todo-item">
-          <h3>${todos.description}</h3>
-          <p><strong>Due Date:</strong> ${todos.dueDate}</p>
-          <span class="status ${todos.done ? 'done' : ''}">
-            ${todos.done ? 'Completed' : 'Pending'}
-          </span>
+      <form method="post">
+        <div class="input-group">
+          <input type="text" name="description" id="description" required />
+          <label for="username">Description</label>
         </div>
-      </c:forEach>
-
-      <!-- Button to add a new to-do -->
-      <div class="btn-container">
-        <button onclick="location.href='/add-todo'">Add New To-Do</button>
-      </div>
+        <div class="input-group">
+          <input type="date" name="dueDate" id="dueDate" required />
+          <label for="dueDate">Due Date</label>
+        </div>
+        <button type="submit">Add Todo Item</button>
+      </form>
     </div>
   </body>
 </html>

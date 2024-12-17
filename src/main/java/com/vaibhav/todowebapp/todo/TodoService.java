@@ -5,22 +5,24 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class TodoService {
     private static List<TodoItem> todoItems = new ArrayList<>();
+    public static int todoCount = 100;
 
     static {
-        todoItems.add(new TodoItem(1, "alice", "Complete project report", LocalDate.of(2024, 11, 10), false));
-        todoItems.add(new TodoItem(2, "bob", "Buy groceries", LocalDate.of(2024, 11, 8), false));
-        todoItems.add(new TodoItem(3, "alice", "Schedule dentist appointment", LocalDate.of(2024, 11, 15), false));
-        todoItems.add(new TodoItem(4, "alice", "Prepare for presentation", LocalDate.of(2024, 11, 12), true));
-        todoItems.add(new TodoItem(5, "eve", "Finish reading book", LocalDate.of(2024, 11, 20), false));
-        todoItems.add(new TodoItem(6, "alice", "Renew gym membership", LocalDate.of(2024, 11, 25), false));
-        todoItems.add(new TodoItem(7, "alice", "Submit tax documents", LocalDate.of(2024, 12, 1), false));
-        todoItems.add(new TodoItem(8, "alice", "Clean the garage", LocalDate.of(2024, 11, 22), true));
-        todoItems.add(new TodoItem(9, "ivan", "Plan holiday trip", LocalDate.of(2024, 12, 5), false));
-        todoItems.add(new TodoItem(10, "judy", "Organize meeting notes", LocalDate.of(2024, 11, 18), true));
+        todoItems.add(new TodoItem(++todoCount, "vxbxv7", "Complete project report", LocalDate.of(2024, 11, 10), false));
+        todoItems.add(new TodoItem(++todoCount, "bob", "Buy groceries", LocalDate.of(2024, 11, 8), false));
+        todoItems.add(new TodoItem(++todoCount, "vxbxv7", "Schedule dentist appointment", LocalDate.of(2024, 11, 15), false));
+        todoItems.add(new TodoItem(++todoCount, "vxbxv7", "Prepare for presentation", LocalDate.of(2024, 11, 12), true));
+        todoItems.add(new TodoItem(++todoCount, "eve", "Finish reading book", LocalDate.of(2024, 11, 20), false));
+        todoItems.add(new TodoItem(++todoCount, "vxbxv7", "Renew gym membership", LocalDate.of(2024, 11, 25), false));
+        todoItems.add(new TodoItem(++todoCount, "vxbxv7", "Submit tax documents", LocalDate.of(2024, 12, 1), false));
+        todoItems.add(new TodoItem(++todoCount, "vxbxv7", "Clean the garage", LocalDate.of(2024, 11, 22), true));
+        todoItems.add(new TodoItem(++todoCount, "ivan", "Plan holiday trip", LocalDate.of(2024, 12, 5), false));
+        todoItems.add(new TodoItem(++todoCount, "vxbxv7", "Organize meeting notes", LocalDate.of(2024, 11, 18), true));
     }
 
     public List<TodoItem> findByUsername(String username) {
@@ -31,5 +33,9 @@ public class TodoService {
                 .forEach(resultList::add);
 
         return resultList;
+    }
+
+    public void addNewTodo(String username, String description, LocalDate dueDate, boolean isDone) {
+        todoItems.add(new TodoItem(++todoCount, username, description, dueDate, isDone));
     }
 }
