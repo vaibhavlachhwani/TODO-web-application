@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -135,17 +136,25 @@
     <div class="todos-container">
       <h1>Hey, ${username}. Add new todo item.</h1>
 
-      <form method="post">
+      <form:form method="post" modelAttribute="todoItem">
         <div class="input-group">
-          <input type="text" name="description" id="description" required />
+          <form:input type="text" name="description" id="description" path="description" required="required"/>
+          <form:errors path="description" cssStyle="color: red"/>
           <label for="username">Description</label>
         </div>
         <div class="input-group">
-          <input type="date" name="dueDate" id="dueDate" required />
+          <form:input type="date" name="dueDate" id="dueDate" path="dueDate" required="required"/>
+          <form:errors path="dueDate" cssStyle="color: red"/>
           <label for="dueDate">Due Date</label>
         </div>
+        <div class="input-group">
+          <form:input type="hidden" name="id" id="id" path="id"/>
+        </div>
+        <div class="input-group">
+          <form:input type="hidden" name="isDone" id="isDone" path="isDone"/>
+        </div>
         <button type="submit">Add Todo Item</button>
-      </form>
+      </form:form>
     </div>
   </body>
 </html>
