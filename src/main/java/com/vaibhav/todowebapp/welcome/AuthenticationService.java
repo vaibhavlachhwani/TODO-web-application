@@ -1,4 +1,4 @@
-package com.vaibhav.todowebapp.login;
+package com.vaibhav.todowebapp.welcome;
 
 import org.springframework.stereotype.Service;
 
