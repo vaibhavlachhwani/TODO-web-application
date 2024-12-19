@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.function.Predicate;
 
 @Service
 public class TodoService {
@@ -37,5 +38,13 @@ public class TodoService {
 
     public void addNewTodo(String username, String description, LocalDate dueDate, boolean isDone) {
         todoItems.add(new TodoItem(++todoCount, username, description, dueDate, isDone));
+    }
+
+    public void deleteById(int id) {
+        Predicate<? super TodoItem> predicate = (todoItem -> {
+            return (todoItem.getId() == id);
+        });
+
+        todoItems.removeIf(predicate);
     }
 }

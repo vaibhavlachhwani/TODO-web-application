@@ -90,11 +90,34 @@
       button:hover {
         background: #0056b3;
       }
+
+      .username {
+        color: #007bff;
+      }
+
+      .delete-btn {
+        margin-top: 10px;
+        padding: 8px 16px;
+        font-size: 14px;
+        font-weight: bold;
+        color: #fff;
+        background: #dc3545; /* Red color for delete */
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .delete-btn:hover {
+        background: #c82333; /* Darker red on hover */
+      }
     </style>
   </head>
   <body>
     <div class="todos-container">
-      <h1>Hey, ${username}. Here is your To-Do List</h1>
+      <h1>
+        Hey, <span class="username">${username}</span>. Here is your To-Do List
+      </h1>
 
       <c:forEach items="${todos}" var="todos">
         <div class="todo-item">
@@ -103,6 +126,13 @@
           <span class="status ${todos.done ? 'done' : ''}">
             ${todos.done ? 'Completed' : 'Pending'}
           </span>
+          <br>
+          <button
+            onclick="location.href='/delete-todo?id=${todos.id}'"
+            class="delete-btn"
+          >
+            Delete
+          </button>
         </div>
       </c:forEach>
 

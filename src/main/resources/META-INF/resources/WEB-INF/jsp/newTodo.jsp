@@ -1,5 +1,5 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> <%@ taglib
+prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -130,28 +130,46 @@
         background: #fff;
         padding: 0 5px;
       }
+
+      .username {
+        color: #007bff;
+      }
     </style>
   </head>
   <body>
     <div class="todos-container">
-      <h1>Hey, ${username}. Add new todo item.</h1>
+      <h1>
+        Hey, <span class="username">${username}</span>. Add new todo item.
+      </h1>
 
       <form:form method="post" modelAttribute="todoItem">
         <div class="input-group">
-          <form:input type="text" name="description" id="description" path="description" required="required"/>
-          <form:errors path="description" cssStyle="color: red"/>
+          <form:input
+            type="text"
+            name="description"
+            id="description"
+            path="description"
+            required="required"
+          />
+          <form:errors path="description" cssStyle="color: red" />
           <label for="username">Description</label>
         </div>
         <div class="input-group">
-          <form:input type="date" name="dueDate" id="dueDate" path="dueDate" required="required"/>
-          <form:errors path="dueDate" cssStyle="color: red"/>
+          <form:input
+            type="date"
+            name="dueDate"
+            id="dueDate"
+            path="dueDate"
+            required="required"
+          />
+          <form:errors path="dueDate" cssStyle="color: red" />
           <label for="dueDate">Due Date</label>
         </div>
         <div class="input-group">
-          <form:input type="hidden" name="id" id="id" path="id"/>
+          <form:input type="hidden" name="id" id="id" path="id" />
         </div>
         <div class="input-group">
-          <form:input type="hidden" name="isDone" id="isDone" path="isDone"/>
+          <form:input type="hidden" name="isDone" id="isDone" path="isDone" />
         </div>
         <button type="submit">Add Todo Item</button>
       </form:form>
