@@ -111,6 +111,25 @@
       .delete-btn:hover {
         background: #c82333; /* Darker red on hover */
       }
+
+      .update-btn {
+        margin-top: 10px;
+        padding: 8px 16px;
+        font-size: 14px;
+        font-weight: bold;
+        color: rgb(0, 136, 204);
+        background: #fff; /* Red color for delete */
+        border: rgb(0, 136, 204);
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .update-btn:hover {
+        color: #fff;
+        border: none;
+        background: rgb(0, 136, 204); /* Darker red on hover */
+      }
     </style>
   </head>
   <body>
@@ -132,6 +151,12 @@
             class="delete-btn"
           >
             Delete
+          </button>
+          <button
+            onclick="location.href='/update-todo?id=${todos.id}'"
+            class="update-btn"
+          >
+            Update
           </button>
         </div>
       </c:forEach>

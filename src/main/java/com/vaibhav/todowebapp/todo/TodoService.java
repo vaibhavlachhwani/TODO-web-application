@@ -47,4 +47,17 @@ public class TodoService {
 
         todoItems.removeIf(predicate);
     }
+
+    public TodoItem findById(int id) {
+        return todoItems.stream()
+                .filter(todoItem -> todoItem.getId() == id)
+                .findFirst()
+                .orElse(null);
+    }
+
+    public void modifyTodoItem(int id, String description, LocalDate dueDate, boolean isDone) {
+        this.findById(id).setDescription(description);
+        this.findById(id).setDueDate(dueDate);
+        this.findById(id).setDone(isDone);
+    }
 }
