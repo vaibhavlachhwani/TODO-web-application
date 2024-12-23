@@ -15,25 +15,21 @@ public class TodoService {
 
     static {
         todoItems.add(new TodoItem(++todoCount, "vxbxv7", "Complete project report", LocalDate.of(2024, 11, 10), false));
-        todoItems.add(new TodoItem(++todoCount, "bob", "Buy groceries", LocalDate.of(2024, 11, 8), false));
+        todoItems.add(new TodoItem(++todoCount, "alice", "Buy groceries", LocalDate.of(2024, 11, 8), false));
         todoItems.add(new TodoItem(++todoCount, "vxbxv7", "Schedule dentist appointment", LocalDate.of(2024, 11, 15), false));
         todoItems.add(new TodoItem(++todoCount, "vxbxv7", "Prepare for presentation", LocalDate.of(2024, 11, 12), true));
-        todoItems.add(new TodoItem(++todoCount, "eve", "Finish reading book", LocalDate.of(2024, 11, 20), false));
+        todoItems.add(new TodoItem(++todoCount, "alice", "Finish reading book", LocalDate.of(2024, 11, 20), false));
         todoItems.add(new TodoItem(++todoCount, "vxbxv7", "Renew gym membership", LocalDate.of(2024, 11, 25), false));
         todoItems.add(new TodoItem(++todoCount, "vxbxv7", "Submit tax documents", LocalDate.of(2024, 12, 1), false));
         todoItems.add(new TodoItem(++todoCount, "vxbxv7", "Clean the garage", LocalDate.of(2024, 11, 22), true));
-        todoItems.add(new TodoItem(++todoCount, "ivan", "Plan holiday trip", LocalDate.of(2024, 12, 5), false));
+        todoItems.add(new TodoItem(++todoCount, "alice", "Plan holiday trip", LocalDate.of(2024, 12, 5), false));
         todoItems.add(new TodoItem(++todoCount, "vxbxv7", "Organize meeting notes", LocalDate.of(2024, 11, 18), true));
     }
 
     public List<TodoItem> findByUsername(String username) {
-        List<TodoItem> resultList = new ArrayList<>();
-
-        todoItems.stream()
-                .filter((item) -> item.getUsername().equals(username))
-                .forEach(resultList::add);
-
-        return resultList;
+        return todoItems.stream()
+                .filter((item) -> item.getUsername().equalsIgnoreCase(username))
+                .toList();
     }
 
     public void addNewTodo(String username, String description, LocalDate dueDate, boolean isDone) {

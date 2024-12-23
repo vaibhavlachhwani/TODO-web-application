@@ -9,24 +9,45 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.function.BiConsumer;
 import java.util.function.Function;
 
 @Configuration
 public class SpringSecurityConfiguration {
+
+    static Map<String, String> userCredentials = new HashMap<>();
+
+    static {
+        userCredentials.put("vxbxv7", "passwd!23");
+        userCredentials.put("alice", "123");
+    }
 
     @Bean
     public InMemoryUserDetailsManager createUserDetailsManager() {
         Function<String, String> passwordEncoder =
                 input -> passwordEncoder().encode(input);
 
-        UserDetails userDetails = User.builder()
-                .passwordEncoder(passwordEncoder)
-                .username("vxbxv7")
-                .password("passwd!23")
-                .roles("USER", "ADMIN")
-                .build();
+        List<UserDetails> userDetails = new ArrayList<>();
 
-        return new InMemoryUserDetailsManager(userDetails);
+        userCredentials.forEach(
+                (username, password) -> userDetails
+                        .add(getUserDetails(username, password, passwordEncoder))
+        );
+
+        return new InMemoryUserDetailsManager(userDetails.toArray(new UserDetails[0]));
+    }
+
+    private static UserDetails getUserDetails(String username, String password, Function<String, String> passwordEncoder) {
+         return User.builder()
+            .passwordEncoder(passwordEncoder)
+            .username(username)
+            .password(password)
+            .roles("USER", "ADMIN")
+            .build();
     }
 
     @Bean

@@ -15,7 +15,6 @@ public class TodoItem {
     @Size(min = 3, max = 80, message = "Description should be atleast 3 and atmost 80 characters long.")
     private String description;
 
-    @FutureOrPresent(message = "Enter a valid date.")
     private LocalDate dueDate;
 
     private boolean isDone;
