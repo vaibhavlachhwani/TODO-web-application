@@ -1,13 +1,19 @@
 package com.vaibhav.todowebapp.todo;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
 
+@Entity
 public class TodoItem {
 
+    @Id
+    @GeneratedValue
     private int id;
 
     private String username;
@@ -25,6 +31,10 @@ public class TodoItem {
         this.description = description;
         this.dueDate = dueDate;
         this.isDone = isDone;
+    }
+
+    public TodoItem() {
+
     }
 
     public int getId() {
