@@ -81,6 +81,10 @@ public class TodoItem {
         isDone = done;
     }
 
+    public void setIsDone(boolean done) {
+        isDone = done;
+    }
+
     @Override
     public String toString() {
         return "TodoItem{" +
